@@ -1,13 +1,6 @@
 
 #include "BinomialHeap.h"
-<<<<<<< HEAD
-
-namespace integered {
-
-    Element::Element(const int size) : size(size) {}
-=======
 #include <iostream>
-
 
 namespace integered {
 
@@ -95,6 +88,5 @@ namespace integered {
         std::cout << "=> " << value << std::endl;
         for(int i = 0; i < size; i++) childeren[i].printr(prefix + 1);
     }
->>>>>>> parent of 6f4eb09... cleanup for restart
 
 }

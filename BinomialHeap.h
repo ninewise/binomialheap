@@ -2,34 +2,6 @@
 #ifndef BINOMIAL_HEAP_H
 #define BINOMIAL_HEAP_H
 
-<<<<<<< HEAD
-namespace integered {
-
-    class Element {
-
-      public:
-        Element(const int size);
-
-      private:
-        const int size;
-
-    }
-
-    class Leaf : public Element {
-
-      private:
-        int value;
-
-    }
-
-    class Root : public Element {
-
-      private:
-        Element* small;
-        Element* large;
-
-    }
-=======
 /**
  * Contains an implementation of Binomial Heaps of integers.
  */
@@ -40,7 +12,6 @@ namespace integered {
      */
     class Tree {
       
-        public:
         // Create a default tree of size 0.
         Tree();
 
@@ -48,28 +19,25 @@ namespace integered {
         Tree(int size, int value);
 
         // Copy constructor.
-        Tree(const Tree& tree);
+        Tree(const Tree&);
 
         // Destructor.
         virtual ~Tree();
 
+        public:
         int getValue() const;
         int getSize() const;
 
-        void setValue(int value);
+        int setValue(int value);
 
         // Deep copy of tree. Needs the same size.
-        Tree& operator=(const Tree& tree);
+        Tree& operator=(Tree tree);
 
         // Check if the size, value and (recursively) childeren are equal.
-        bool operator==(const Tree& tree) const;
+        bool operator==(Tree tree) const;
 
         // The merge of two tree of the same size.
-        friend const Tree operator+(const Tree& tree1, const Tree& Tree2);
-
-        // Print the binomial tree.
-        void print() const;
-        void printr(int prefix) const;
+        friend Tree operator+(const Tree tree1, const Tree Tree2);
 
         private:
         // The size of the tree. This is the order of the tree.
@@ -80,7 +48,6 @@ namespace integered {
         Tree* childeren;
 
     };
->>>>>>> parent of 6f4eb09... cleanup for restart
 
 }
 
