@@ -1,6 +1,6 @@
 
-#ifndef BINOMIAL_HEAP_H
-#define BINOMIAL_HEAP_H
+#ifndef BINOMIAL_TREE_H
+#define BINOMIAL_TREE_H
 
 /**
  * Contains an implementation of Binomial Heaps of integers.

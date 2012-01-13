@@ -1,5 +1,5 @@
 
-#include "BinomialHeap.h"
+#include "BinomialTree.h"
 #include <iostream>
 
 namespace integered {
