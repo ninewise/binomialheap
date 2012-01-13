@@ -1,5 +1,5 @@
 
-SOURCES=
+SOURCES=main.cpp BinomialHeap.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
 all: $(OBJECTS)

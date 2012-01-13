@@ -10,7 +10,9 @@ namespace integered {
 
     Tree::Tree() : size(0), value(0) {}
 
-    Tree::Tree(const int size, int value) : size(size), value(value) {
+    Tree::Tree(int size) : size(size), value(0) {}
+
+    Tree::Tree(int size, int value) : size(size), value(value) {
         if(size != 0) {
             childeren = new Tree[size];
         }
@@ -21,7 +23,7 @@ namespace integered {
     }
 
     Tree::~Tree() {
-        delete[] childeren;
+        if(size > 0) delete[] childeren;
     }
 
     /* ===================================================================== *\
@@ -38,7 +40,11 @@ namespace integered {
     \* ===================================================================== */
 
     Tree& Tree::operator=(const Tree& tree) {
-        if(size != tree.size) throw "Operation only for Trees of equal size.";
+        if(size != tree.size) {
+            delete[] childeren;
+            size = tree.size;
+            childeren = new Tree[size];
+        }
         value = tree.value;
         for(int i = 0; i < size; i++) childeren[i] = tree.childeren[i];
 
@@ -69,7 +75,8 @@ namespace integered {
         Tree temp(size + 1, smaller.value);
 
         temp.childeren[0] = larger;
-        for(int i = 1; i < size; i++) temp.childeren[i] = smaller.childeren[i];
+        for(int i = 0; i < size; i++)
+            temp.childeren[i+1] = smaller.childeren[i];
 
         return (temp);
     }
