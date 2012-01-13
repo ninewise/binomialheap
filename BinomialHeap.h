@@ -12,6 +12,7 @@ namespace integered {
      */
     class Tree {
       
+        public:
         // Create a default tree of size 0.
         Tree();
 
@@ -19,25 +20,28 @@ namespace integered {
         Tree(int size, int value);
 
         // Copy constructor.
-        Tree(const Tree&);
+        Tree(const Tree& tree);
 
         // Destructor.
         virtual ~Tree();
 
-        public:
         int getValue() const;
         int getSize() const;
 
-        int setValue(int value);
+        void setValue(int value);
 
         // Deep copy of tree. Needs the same size.
-        Tree& operator=(Tree tree);
+        Tree& operator=(const Tree& tree);
 
         // Check if the size, value and (recursively) childeren are equal.
-        bool operator==(Tree tree) const;
+        bool operator==(const Tree& tree) const;
 
         // The merge of two tree of the same size.
-        friend Tree operator+(const Tree tree1, const Tree Tree2);
+        friend const Tree operator+(const Tree& tree1, const Tree& Tree2);
+
+        // Print the binomial tree.
+        void print() const;
+        void printr(int prefix) const;
 
         private:
         // The size of the tree. This is the order of the tree.
@@ -47,7 +51,7 @@ namespace integered {
         // An array of the childeren of this Trees root.
         Tree* childeren;
 
-    }
+    };
 
 }
 
