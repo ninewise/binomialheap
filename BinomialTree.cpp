@@ -26,6 +26,9 @@ namespace integered {
         if(size > 0) delete[] childeren;
     }
 
+	Leaf::Leaf() : Tree() {}
+	Leaf::Leaf(int value) : Tree(0, value) {}
+
     /* ===================================================================== *\
      *                          GETTERS AND SETTERS                          *
     \* ===================================================================== */
@@ -41,7 +44,7 @@ namespace integered {
 
     Tree& Tree::operator=(const Tree& tree) {
         if(size != tree.size) {
-            delete[] childeren;
+            if(size > 0) delete[] childeren;
             size = tree.size;
             childeren = new Tree[size];
         }
@@ -58,6 +61,10 @@ namespace integered {
         while(childeren[i] == tree.childeren[i]) i++;
 
         return i == size;
+    }
+
+    bool Tree::operator!=(const Tree& tree) const {
+        return !operator==(tree);
     }
 
     const Tree operator+(const Tree& tree1, const Tree& tree2) {

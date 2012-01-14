@@ -12,7 +12,7 @@ namespace integered {
      */
     class Tree {
       
-    public:
+      public:
 
         // Constructors.
         Tree();
@@ -33,6 +33,7 @@ namespace integered {
 
         // Check if the size, value and (recursively) childeren are equal.
         bool operator==(const Tree& tree) const;
+        bool operator!=(const Tree& tree) const;
 
         // The merge of two tree of the same size.
         friend const Tree operator+(const Tree& tree1, const Tree& Tree2);
@@ -41,7 +42,7 @@ namespace integered {
         void print() const;
         void printr(int prefix) const;
 
-    private:
+      private:
 
         // The size of the tree. This is the order of the tree.
         int size;
@@ -51,6 +52,15 @@ namespace integered {
         Tree* childeren;
 
     };
+
+	class Leaf : public Tree {
+
+	  public:
+
+		Leaf();
+		Leaf(int value);
+
+	};
 
 }
 

@@ -1,5 +1,5 @@
 
-SOURCES=main.cpp BinomialTree.cpp
+SOURCES=main.cpp BinomialTree.cpp BinomialHeap.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
 all: $(OBJECTS)
@@ -10,3 +10,6 @@ all: $(OBJECTS)
 
 clean:
 	rm *.o a.out
+
+run: a.out
+	./a.out
