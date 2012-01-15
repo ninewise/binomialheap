@@ -79,8 +79,8 @@ namespace integered {
     \* ===================================================================== */
 
     void Heap::push(const int value) {
-        Tree* element = new Leaf(value);
-        merge(*element);
+        Leaf element(value);
+        merge(element);
     }
 
     int Heap::pop() {
@@ -130,3 +130,4 @@ namespace integered {
     }
 
 }
+
