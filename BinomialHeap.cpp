@@ -23,7 +23,7 @@ namespace integered {
     }
 
     /* ===================================================================== *\
-     *                               Publics                                 *
+     *                               Testing                                 *
     \* ===================================================================== */
 
     void Heap::print() const {
@@ -72,6 +72,36 @@ namespace integered {
             used  = boolt;
             size = new_size;
         }
+    }
+
+    /* ===================================================================== *\
+     *                               Publics                                 *
+    \* ===================================================================== */
+
+    void Heap::push(const int value) {
+        Tree* element = new Leaf(value);
+        merge(*element);
+    }
+
+    int Heap::pop() {
+        int min = 0;
+        while(min < size && !used[min]) min++;
+        if(min == size) throw "Pop of empty stack error";
+
+        for(int i = 0; i < size; i++) if(used[i]) {
+            if(trees[i].getValue() < trees[min].getValue()) min = i;
+        }
+
+        int value = trees[min].getValue();
+        int order = trees[min].getSize();
+        Tree childeren[order];
+        for(int i = 0; i < order; i++)
+            childeren[i] = trees[min].getChilderen()[i];
+        used[min] = false;
+
+        for(int i = 0; i < order; i++) merge(childeren[i]);
+
+        return value;
     }
 
     void Heap::merge(const Tree& tree) {

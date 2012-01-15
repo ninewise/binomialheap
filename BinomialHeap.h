@@ -16,6 +16,12 @@ namespace integered {
         // Print each tree in the heap.
         void print() const;
 
+        // Pushing a new value onto the heap.
+        void push(const int value);
+
+        // Taking the smallest value off the heap.
+        int pop();
+
         // Merge a single tree into this heap.
         void merge(const Tree& tree);
 

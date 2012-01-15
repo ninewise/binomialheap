@@ -10,7 +10,11 @@ namespace integered {
 
     Tree::Tree() : size(0), value(0) {}
 
-    Tree::Tree(int size) : size(size), value(0) {}
+    Tree::Tree(int size) : size(size), value(0) {
+        if(size != 0) {
+            childeren = new Tree[size];
+        }
+    }
 
     Tree::Tree(int size, int value) : size(size), value(value) {
         if(size != 0) {
@@ -27,7 +31,7 @@ namespace integered {
     }
 
 	Leaf::Leaf() : Tree() {}
-	Leaf::Leaf(int value) : Tree(0, value) {}
+	Leaf::Leaf(const int value) : Tree(0, value) {}
 
     /* ===================================================================== *\
      *                          GETTERS AND SETTERS                          *
@@ -35,6 +39,7 @@ namespace integered {
 
     int Tree::getValue() const { return value; }
     int Tree::getSize() const { return size; }
+    Tree* Tree::getChilderen() const { return childeren; }
 
     void Tree::setValue(int value) { this->value = value; }
 
@@ -48,6 +53,7 @@ namespace integered {
             size = tree.size;
             childeren = new Tree[size];
         }
+
         value = tree.value;
         for(int i = 0; i < size; i++) childeren[i] = tree.childeren[i];
 

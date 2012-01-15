@@ -25,6 +25,7 @@ namespace integered {
 
         int getValue() const;
         int getSize() const;
+        Tree* getChilderen() const;
 
         void setValue(int value);
 
@@ -58,7 +59,7 @@ namespace integered {
 	  public:
 
 		Leaf();
-		Leaf(int value);
+		Leaf(const int value);
 
 	};
 
