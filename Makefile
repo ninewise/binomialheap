@@ -1,15 +1,16 @@
 
-SOURCES=main.cpp BinomialTree.cpp BinomialHeap.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
+CC=g++
+CPPFLAGS=-Wall
 
-all: $(OBJECTS)
-	g++ -Wall $(OBJECTS)
+all: main
 
-%.o: %.cpp
-	g++ -Wall -c $< -o $@
+main: main.o BinomialHeap.o BinomialTree.o
+main.o: main.cpp BinomialHeap.h
+BinomialHeap.o: BinomialHeap.cpp BinomialHeap.h BinomialTree.h
+BinomialTree.o: BinomialTree.cpp BinomialTree.h
 
 clean:
-	rm *.o a.out
+	rm -f *.o main
 
-run: a.out
-	./a.out
+run: main
+	./main
